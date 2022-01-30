@@ -2,30 +2,32 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/nav_graph.xml"
     app:startDestination="@id/weatherFragment">
 
+    <fragment
+        android:id="@+id/cityFragment"
+        android:name="com.example.a3lesson3.ui.fragments.city.CityFragment"
+        android:label="fragment_change"
+        tools:layout="@layout/fragment_city">
+        <action
+            android:id="@+id/action_cityFragment_to_weatherFragment"
+            app:destination="@id/weatherFragment">
+            <argument android:name="cityName"
+                app:argType="string"
+                app:nullable="false"/>
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/weatherFragment"
         android:name="com.example.a3lesson3.ui.fragments.weather.WeatherFragment"
         android:label="fragment_weather"
-        tools:layout="@layout/fragment_weather" >
-        <action
-            android:id="@+id/action_weatherFragment_to_cityFragment"
-            app:destination="@id/cityFragment" />
-        <argument
-            android:name="cityName"
+        tools:layout="@layout/fragment_weather">
+        <argument android:name="cityName"
             app:argType="string"
-            android:defaultValue="Bishkek" />
-    </fragment>
-    <fragment
-        android:id="@+id/cityFragment"
-        android:name="com.example.a3lesson3.ui.fragments.city.CityFragment"
-        android:label="fragment_city"
-        tools:layout="@layout/fragment_city" >
-        <action
-            android:id="@+id/action_cityFragment_to_weatherFragment"
-            app:destination="@id/weatherFragment" />
-    </fragment>
+            app:nullable="false"
+            android:defaultValue="Bishkek"
+            />
 
+    </fragment>
 </navigation>
